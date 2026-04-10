@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "FlashcardSet": {
+      "title": "FlashcardSet",
+      "description": "A set of generated flashcards",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "grade": { "type": "string" },
+        "subject": { "type": "string" },
+        "topic": { "type": "string" },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": { "type": "string" },
+              "answer": { "type": "string" }
+            }
+          }
+        },
+        "revisionSheet": {
+          "type": "object",
+          "properties": {
+            "lesson": { "type": "string" },
+            "keyPoints": { "type": "array", "items": { "type": "string" } },
+            "keywords": { "type": "array", "items": { "type": "string" } },
+            "schemaDescription": { "type": "string" },
+            "example": { "type": "string" }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "grade", "subject", "cards"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "flashcardSets/{setId}": {
+      "schema": "FlashcardSet",
+      "description": "Collection of flashcard sets"
+    }
+  }
+}

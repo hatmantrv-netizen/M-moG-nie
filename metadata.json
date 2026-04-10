@@ -1,0 +1,5 @@
+{
+  "name": "MémoGénie - Cartes Mémo Scolaires",
+  "description": "Générateur intelligent de cartes mémo (flashcards) pour le programme scolaire français de la 6ème à la Terminale.",
+  "requestFramePermissions": []
+}
